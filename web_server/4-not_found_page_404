@@ -9,7 +9,7 @@ sudo touch /etc/nginx/html/index.html
 sudo touch /etc/nginx/html/404.html
 echo "Ceci n'est pas une page" > /etc/nginx/html/404.html
 
-sudo printf %s "server {
+printf %s "server {
     listen 80;
     listen [::]:80 default_server;
     root   /etc/nginx/html;
