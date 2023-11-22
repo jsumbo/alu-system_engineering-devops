@@ -5,11 +5,11 @@
 apt-get update
 apt-get install -y nginx
 
-mkdir /etc/nginx/html
+sudo mkdir /etc/nginx/html
 sudo touch /etc/nginx/html/index.html
 sudo touch /etc/nginx/html/404.html
-sudo echo "Holberton School" > /etc/nginx/html/index.html
-echo "Ceci n'est pas une page" > /etc/nginx/html/404.html
+sudo echo "Holberton School" > /etc/nginx/html/index.html #open file directly to edit contents. sudo vi /etc/nginx/html/index.html
+echo "Ceci n'est pas une page" > /etc/nginx/html/404.html #open file directly to edit contents. sudo vi /etc/nginx/html/404.html
 
 printf %s "server {
     listen 80;
@@ -26,4 +26,4 @@ printf %s "server {
     }
 }" > /etc/nginx/sites-available/default
 
-service nginx restart
+sudo service nginx restart
