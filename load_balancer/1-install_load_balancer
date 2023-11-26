@@ -23,10 +23,10 @@ frontend http-in
 backend webservers
     balance roundrobin
     server 5804-web-01 34.228.10.0:80 check
-    server 5804-web-02 3.80.130.8:80 check
+    server web-02 3.80.130.8:80    
 EOT
 
-# Update the hostname
+# Update the hostname / server 5804-web-02 3.80.130.8:80 check 
 sudo hostnamectl set-hostname 53580825-haproxy
 
 # Enable HAProxy as a service managed by the init script
