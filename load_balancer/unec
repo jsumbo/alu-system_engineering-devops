@@ -1,13 +1,10 @@
 #!/usr/bin/env bash
+#Install and configure HAproxy
 
-# Update repositories and install HAProxy
-sudo apt-get update
-sudo apt-get install -y haproxy
+apt-get update
+apt-get install -y haproxy
 
-# Backup the default HAProxy configuration
 sudo mv /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.bak
-
-# Create a new HAProxy configuration
 sudo tee /etc/haproxy/haproxy.cfg > /dev/null <<EOT
 global
     daemon
@@ -25,15 +22,15 @@ frontend http-in
 
 backend webservers
     balance roundrobin
-    server lb-01-web-01 5804-web-01-34.228.10.0:80 check
-    server lb-01-web-02 5804-web-02-3.80.130.8:80 check
+    server 5804-web-01 34.228.10.0:80 check
+    server web-02 3.80.130.8:80    
 EOT
 
-# Update the hostname to lb-01
-sudo hostnamectl set-hostname lb-01
+# Update the hostname / server 5804-web-02 3.80.130.8:80 check 
+sudo hostnamectl set-hostname 53580825-haproxy
 
 # Enable HAProxy as a service managed by the init script
-sudo systemctl enable haproxy
+sudo service haproxy enable 
 
 # Restart HAProxy service
-sudo systemctl restart haproxy
+sudo service haproxy restart
